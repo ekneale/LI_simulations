@@ -1,0 +1,26 @@
+## User-set variables to use in submission ##
+############################################
+Index		= $(Process) + 1
+Values		= $INT(Index,%d)
+
+## Job Initiation Variables ##
+##############################
+JobBatchName	= collimator_1_job
+
+
+Executable	= $ENV(PWD)/job_collimator_1_0.9_0.75_1.30.sh
+
+Error		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30.err
+Output		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30.out
+Log		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30.log
+
+## Transfer information to job run environment so it can be used by job
+environment	= "'iJob=$(Values)' CONDOR_JOB_ID=$(Cluster) CONDOR_JOB_NUM=$(ProcId) USER=$ENV(USER) WCSIMDIR=/data2/kneale/hk-software/WCSim"
+
+## Requirements of job run #
+############################
+request_memory=4GB
+request_cpus=1
+maxjobretirementtime=1*3600
+
+queue 1
