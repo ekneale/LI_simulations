@@ -1,0 +1,25 @@
+## User-set variables to use in submission ##
+############################################
+Index		= $(Process) + 1
+Values		= $INT(Index,%d)
+
+## Job Initiation Variables ##
+##############################
+JobBatchName	= diffuser_1_job
+
+
+Executable	= $ENV(PWD)/job_diffuser_1_0.9_0.75_1.30.sh
+
+Error		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).err
+Output		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).out
+Log		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).log
+
+## Transfer information to job run environment so it can be used by job
+environment	= "'iJob=$(Values)' CONDOR_JOB_ID=$(Cluster) CONDOR_JOB_NUM=$(ProcId) USER=$ENV(USER) WCSIMDIR=/data2/kneale/hk-software/hk-WCSim/WCSim-interpolator"
+
+## Requirements of job run #
+############################
+request_memory=8GB
+maxjobretirementtime=1*3600
+
+queue 50
