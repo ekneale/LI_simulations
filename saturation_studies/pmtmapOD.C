@@ -52,7 +52,7 @@ Double_t PMTInjectorDistance(float pmtx, float pmty, float pmtz, std::vector<flo
   return distance;
 }
 
-void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_41/reduced_diffuser_41_365.0_nm_10.0_ns_5500000_ppp_all.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 398, float saturation_limit = 500.341)
+void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_97/reduced_diffuser_97_365.0_nm_10.0_ns_10000000_ppp_all.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 434, float saturation_limit = 667.016)
 {
 
   // Some nicely formatted text options
@@ -462,7 +462,7 @@ void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/
   }
   cpq->SaveAs("diffuse_QCoverage.png");
 
-  TCanvas *ctg = new TCanvas("ctg", "ctg", 650, 600);
+//  TCanvas *ctg = new TCanvas("ctg", "ctg", 650, 600);
   TGraph *tgpmt = new TGraph(num_OD_PMT, pmt_x, pmt_y);
   std::cout << "number of injectors: " << sizeof(injector_x) / sizeof(int) << std::endl;
   tgpmt->SetMarkerColor(2);
@@ -470,9 +470,9 @@ void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/
   tgpmt->SetMarkerSize(1);
   tginjector->SetMarkerStyle(20);
   tginjector->SetMarkerSize(1);
-  tgpmt->Draw("ap");
-  tginjector->Draw("p same");
-  tgpmt->Draw("p same");
-  TCanvas *c1 = new TCanvas("c1", "c1", 650, 600);
-  h1->Draw();
+//  tgpmt->Draw("ap");
+//  tginjector->Draw("p same");
+//  tgpmt->Draw("p same");
+//  TCanvas *c1 = new TCanvas("c1", "c1", 650, 600);
+//  h1->Draw();
 }
