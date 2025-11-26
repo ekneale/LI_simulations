@@ -56,3 +56,21 @@ The following diffuser characteristics should be set within make_baseline_jobs.s
 ```diffusers``` the index of each diffuser being simulated, which must correspond to the index of the diffuser in the LightInjectorsDetails.json database in WCSim/data
 
 The ```BASE_DATA_DIR``` directory where you want the output root files to be stored should also be defined in make_baseline_jobs.sh.
+
+# Saturation Studies
+
+Once you have run all of the diffuser simulations, you should hadd together all of the runs for each diffuser so that you have a single reduced_*.root file for each diffuser. 
+
+There are currently two parts to the saturation studies:
+
+1. plot_diffuser_output.C
+
+2. pmtmapOD.C
+
+Both of these currently require you to set the name of the hadded reduced_*.root file which is passed in the function initialisation. This should be changed/automated.
+
+The first step - plot_diffuser_output.C - plots the mean number of photoelectrons (pe) per PMT and calculates the mean saturation distance, defined as the distance at which the mean number of pe per PMT is over the saturation threshold. The saturation threshold is currently set to 100 pe in 16 ns, limited by the digitisation constraints. It also plots the total number of pe per PMT and calcualates the saturation limit, defined as the distance at which the total number of pe per PMT is over the saturation threshold, for at least one PMT. 
+
+These two values - the saturation distance and saturation limit - are then input into pmtmapOD.C. This calculates the percentage of PMTs which fall within the saturation distance and saturation limit, and plots a charge map of all of the PMTs in the detector, showing the positions of the diffusers (read from a list of diffuser positions) and rings marking in the saturation distance and saturation limit around them for visualisation of the percentage saturation coverage.
+
+Currently the saturation distance, saturation limit, and percentage coverages are output to screen, although the percentage coverages are also output to a text file. At some point, this process will be improved so that the whole analysis runs automatically given an input file name from the command line.
