@@ -49,7 +49,7 @@ The following diffuser characteristics should be set within make_baseline_jobs.s
 
 ```wavelengths``` the photon wavelength for each of the diffusers being simulated
 
-```pulsewidths``` the diffuser FWHM pulse width in ns (__NB__ this will not currently change the simulation, and is for file naming only)
+```pulsewidths``` the diffuser FWHM pulse width in ns
 
 ```pulses``` the number of pulses you wish to simulate per job run - this will be largely dictated by time and memory constraints
 
