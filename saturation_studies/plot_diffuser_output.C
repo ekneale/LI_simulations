@@ -58,7 +58,7 @@ float max_charge_in_window(TH1D *h,float window){
   return max_charge;
 }
 
-void plot_diffuser_output( const char *inFileName1 = "/data2/kneale/hk-software/diffuser_sims/diffuser_117/reduced_diffuser_117_365.0_nm_10.0_ns_5500000_ppp_all.root", bool verbosity = 0){ 
+void plot_diffuser_output( const char *inFileName1 = "/data2/kneale/hk-software/diffuser_sims/diffuser_93/reduced_diffuser_93_365.0_nm_10.0_ns_10000000_ppp_all.root", bool verbosity = 0){ 
 
   string filename_tmp = std::string(inFileName1).substr(0,std::string(inFileName1).find(".root"));
   string filename = filename_tmp.substr(filename_tmp.find_last_of("/")+1);

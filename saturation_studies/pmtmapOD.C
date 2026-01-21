@@ -52,7 +52,7 @@ Double_t PMTInjectorDistance(float pmtx, float pmty, float pmtz, std::vector<flo
   return distance;
 }
 
-void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_97/reduced_diffuser_97_365.0_nm_10.0_ns_10000000_ppp_all.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 434, float saturation_limit = 667.016)
+void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_93/reduced_test_wcsim.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 434, float saturation_limit = 667.016)
 {
 
   // Some nicely formatted text options

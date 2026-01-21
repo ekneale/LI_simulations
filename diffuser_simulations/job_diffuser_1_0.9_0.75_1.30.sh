@@ -26,15 +26,11 @@ cp $DATA_DIR/../$original_macro $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 
 sed -i "s/wcsim_output.root/\/scratch\/kneale\/diffuser_1_0.9_0.75_1.30.root/" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 sed -i "s/seed 3254/seed 3254${CONDOR_JOB_NUM}/" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
-
 sed -i "s/injectorPulseWidth 999/injectorPulseWidth 2/g" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 sed -i "s/injectorWavelength 999/injectorWavelength 400/g" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 sed -i "s/injectorIdx 999/injectorIdx 1/g" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 sed -i "s/nphotons 999/nphotons 2/g" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 sed -i "s/beamOn 999/beamOn 2/g" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
-
-sed -i "s/wcsim_output.root/\/scratch\/kneale\/diffuser_1_0.9_0.75_1.30.root/" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
-sed -i "s/seed 3254/seed 3254${CONDOR_JOB_NUM}/" $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac
 
 WCSim $DATA_DIR/macro_diffuser_1_0.9_0.75_1.30.mac  $DATA_DIR/params_0.9_0.75_1.30.mac
 

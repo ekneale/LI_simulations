@@ -5,21 +5,21 @@ Values		= $INT(Index,%d)
 
 ## Job Initiation Variables ##
 ##############################
-JobBatchName	= diffuser_1_job
+JobBatchName	= collimator_1_0.9_0.75_1.30_job
 
 
-Executable	= $ENV(PWD)/job_diffuser_1_0.9_0.75_1.30.sh
+Executable	= $ENV(PWD)/job_collimator_1_0.9_0.75_1.30.sh
 
-Error		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).err
-Output		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).out
-Log		= $ENV(PWD)/logs/diffuser_1_0.9_0.75_1.30_$(ProcId).log
+Error		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30_$(ProcId).err
+Output		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30_$(ProcId).out
+Log		= $ENV(PWD)/logs/collimator_1_0.9_0.75_1.30_$(ProcId).log
 
 ## Transfer information to job run environment so it can be used by job
 environment	= "'iJob=$(Values)' CONDOR_JOB_ID=$(Cluster) CONDOR_JOB_NUM=$(ProcId) USER=$ENV(USER) WCSIMDIR=/data2/kneale/hk-software/WCSim"
 
 ## Requirements of job run #
 ############################
-request_memory=8GB
+request_memory=4GB
 maxjobretirementtime=1*3600
 
 queue 50

@@ -361,15 +361,15 @@
 # with random times between 20 and 21 ns.
 /mygen/nphotons 999
 # Specify the injector type: collimator, diffuser or laser ball
-/mygen/injectorType diffuser
+/mygen/injectorType collimator
 # Specify the injector index for this type of LI that corresponds to the 
 # device position and profile you wish to use
 /mygen/injectorIdx 999
-/mygen/injectorDetector OD
+/mygen/injectorDetector 999
 /mygen/injectorWavelength 999
+/mygen/injectorProfileFormat xyAngle
 /mygen/injectorFilename LightInjectors.json
 /mygen/injectorDetails LightInjectorsDetails.json
-/mygen/injectorProfileFormat thetaPhi
 /mygen/injectorPulseWidth 999
 # Default /mygen/photonMode 0 generates photon directions using the LI profile
 # Set /mygen/photonMode 1 to read pre-generated photon positions and directions 
@@ -516,5 +516,5 @@
 # -- The options tree will be filled with one entry for each run
 # -- The EventHeader has a run number that specifies the run (and corresponding options tree entry) for a given event
 # It is therefore your responsibility to confirm that the options you are changing work as expected in multi-run mode
-/run/beamOn 999
+/run/beamOn 10
 #exit

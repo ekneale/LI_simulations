@@ -26,7 +26,7 @@
 
 
 
-void pmtmapID( const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/ligen_bug/reduced_wcsim_ID_costheta_no_normalisation_fittotheta_params_off.root", bool verbosity = 1){ 
+void pmtmapID( const char *inFileName = "/data2/kneale/hk-software/collimator_sims/collimator_13/reduced_wcsim_output_no_projection.root", bool verbosity = 1){ 
 	
   // Some nicely formatted text options
   //std::cout << std::scientific; // This causes all numbers to be displayed in scientific notation.
