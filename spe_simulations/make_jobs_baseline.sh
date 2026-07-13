@@ -1,31 +1,32 @@
 
-photonsperpulse=(5500000 5500000 5500000 5500000 5500000 5500000)
-wavelengths=(365.0 365.0 365.0 365.0 365.0 365.0)
-pulsewidths=(10.0 10.0 10.0 10.0 10.0 10.0)
-pulses=(1 1 1 1 1 1)
-diffusers=(41 62 93 97 116 117)
+photonsperpulse=10000
+wavelengths=365.0
+pulsewidths=10.0
+pulses=100
 
-for laserIdx in {0..5}
+for laserIdx in {0..121}
 do
-    diffuserIdx=${diffusers[laserIdx]}
-    wl=${wavelengths[laserIdx]}
-    ppp=${photonsperpulse[laserIdx]}
-    pw=${pulsewidths[laserIdx]}
-    npulse=${pulses[laserIdx]}
+    diffuserIdx=$laserIdx
+    wl=$wavelengths
+    ppp=$photonsperpulse
+    pw=$pulsewidths
+    npulse=$pulses
 
-    BASE_DATA_DIR=/data2/kneale/hk-software/diffuser_sims/diffuser_${diffuserIdx}
+    SETUP_DIR=/data2/kneale/hk-software/LI_simulations/spe_simulations
+
+    BASE_DATA_DIR=/data2/kneale/hk-software/spe_sims/diffuser_${diffuserIdx}
     if [ ! -e $BASE_DATA_DIR ];
     then
-        mkdir $BASE_DATA_DIR;
+        mkdir -p $BASE_DATA_DIR;
     fi
     if [ ! -e $BASE_DATA_DIR/logs ];
     then
         mkdir $BASE_DATA_DIR/logs;
     fi
-    cp $BASE_DATA_DIR/../params_0.9_0.75_1.30.mac $BASE_DATA_DIR/params_0.9_0.75_1.30.mac
+    cp $SETUP_DIR/params_0.9_0.75_1.30.mac $BASE_DATA_DIR/params_0.9_0.75_1.30.mac
 
-    cp $BASE_DATA_DIR/../job_diffuser_1_0.9_0.75_1.30.sh $BASE_DATA_DIR/job_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp.sh
-    cp $BASE_DATA_DIR/../condor_diffuser_1.sub $BASE_DATA_DIR/condor_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp.sub
+    cp $SETUP_DIR/job_diffuser_1_0.9_0.75_1.30.sh $BASE_DATA_DIR/job_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp.sh
+    cp $SETUP_DIR/condor_diffuser_1.sub $BASE_DATA_DIR/condor_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp.sub
 
     # change the file names in the job script
     sed -i "s/\/macro_diffuser_1_0.9_0.75_1.30.mac/\/macro_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp_\${CONDOR_JOB_NUM}.mac/g" $BASE_DATA_DIR/job_diffuser_${diffuserIdx}_${wl}_nm_${pw}_ns_${ppp}_ppp.sh
