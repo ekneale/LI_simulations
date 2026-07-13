@@ -52,8 +52,12 @@ Double_t PMTInjectorDistance(float pmtx, float pmty, float pmtz, std::vector<flo
   return distance;
 }
 
-void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_93/reduced_test_wcsim.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 434, float saturation_limit = 667.016)
+void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/diffuser_41/reduced_diffuser_41_365.0_nm_10.0_ns_5500000_ppp_all.root", bool verbosity = 1, bool circles = 0, float saturation_distance = 354, float saturation_limit = 435.963)
 {
+
+  string filename_tmp = std::string(inFileName).substr(0,std::string(inFileName).find(".root"));
+  string filename = filename_tmp.substr(filename_tmp.find_last_of("/")+1);
+  std::cout << "filename " << filename << std::endl;
 
   // Some nicely formatted text options
   // std::cout << std::scientific; // This causes all numbers to be displayed in scientific notation.
@@ -460,7 +464,8 @@ void pmtmapOD(const char *inFileName = "/data2/kneale/hk-software/diffuser_sims/
       }
     }
   }
-  cpq->SaveAs("diffuse_QCoverage.png");
+  cpq->SaveAs(Form("%s_QCoverage.png",filename.c_str()));
+  cpq->SaveAs(Form("%s_QCoverage.C",filename.c_str()));
 
 //  TCanvas *ctg = new TCanvas("ctg", "ctg", 650, 600);
   TGraph *tgpmt = new TGraph(num_OD_PMT, pmt_x, pmt_y);
