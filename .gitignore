@@ -2,5 +2,5 @@
 */*.png
 */*.txt
 */*/*.png
-*/*/*.C
+*/make_plots/*.C
 */results*
